@@ -7,12 +7,10 @@ import java.util.List;
 class VideoPlaylist implements Comparable<VideoPlaylist> {
   private final String title;
   private List<Video> videos;
-  private int size;
 
   public VideoPlaylist(String title) {
     this.title = title;
     this.videos = new ArrayList<>();
-    this.size = 0;
   }
 
   public String getTitle() {
@@ -20,7 +18,7 @@ class VideoPlaylist implements Comparable<VideoPlaylist> {
   }
 
   public int getSize() {
-    return size;
+    return videos.size();
   }
 
   public List<Video> getVideos() {
@@ -37,22 +35,16 @@ class VideoPlaylist implements Comparable<VideoPlaylist> {
     }
 
     videos.add(video);
-    size++;
     return true;
   }
 
   // Returns true if video is removed, false otherwise
   public boolean remove(Video video) {
-    if (videos.remove(video)) {
-      size--;
-      return true;
-    }
-    return false;
+    return videos.remove(video);
   }
 
   public void clear() {
     videos = new ArrayList<>();
-    size = 0;
   }
 
   @Override
